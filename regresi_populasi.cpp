@@ -2,22 +2,24 @@
 #include <cmath>
 using namespace std;
 
-// Fungsi evaluasi polinomial derajat 3: y = a*x^3 + b*x^2 + c*x + d
-double evaluatePolynomial(double x) {
-    double a = 0.002084;       // koefisien x^3
-    double b = -12.82;         // koefisien x^2
-    double c = 25812;          // koefisien x
-    double d = -17000000;      // konstanta
-    return a*pow(x,3) + b*pow(x,2) + c*x + d;
+// Fungsi evaluasi populasi dengan x = tahun - 1960
+double evaluatePopulation(int tahun) {
+    double x = tahun - 1960;
+
+    // Koefisien hasil regresi dari Python (derajat 3, berdasarkan x = tahun - 1960)
+    // y = 1043.7x^3 - 23714.6x^2 + 282516.5x + 87706406
+    return 1043.7 * pow(x, 3) - 23714.6 * pow(x, 2) + 282516.5 * x + 87706406;
 }
 
 int main() {
-    cout << "Persamaan polinomial pertumbuhan populasi:\n";
-    cout << "y = 0.002084x^3 - 12.82x^2 + 25812x - 17000000\n\n";
-
     int tahun = 2030;
-    double estimasi = evaluatePolynomial(tahun);
 
+    cout << "Persamaan polinomial pertumbuhan populasi:\n";
+    cout << "y = 1043.7x^3 - 23714.6x^2 + 282516.5x + 87706406\n";
+    cout << "(* dengan x = tahun - 1960)\n\n";
+
+    double estimasi = evaluatePopulation(tahun);
     cout << "Estimasi populasi Indonesia tahun " << tahun << " adalah " << estimasi << " jiwa" << endl;
+
     return 0;
 }
